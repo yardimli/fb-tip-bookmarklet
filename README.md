@@ -15,6 +15,6 @@ with bit.ly or other url shortening service facebook would not be able to block 
 
 I wrote a small bookmarklet as a proof-of-concept. You can test it by going to the link bellow and drag the link within that page to your toolbar.
 
-[Test Page](https://github.com/yardimli/fb-tip-bookmarklet/master/test.html)
+[Test Page](http://yardimli.github.io/test.html)
 
 Then open facebook waith for the page to finish loading click on the bookmark you just added and move the mouse around the page over the thumbnails of your friends.
