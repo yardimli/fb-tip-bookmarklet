@@ -1,0 +1,19 @@
+fb-tip-bookmarklet
+==================
+
+A bookmarklet based service to allow for users to tip dogecoins to each other without breaking facebook TOS
+
+Tipping on facebook would be great to expose masses to tipping. But with the limits facebook API is putting in place it becomes hard to get it done.
+
+I was thinking using a bookmarklet for this. A bookmarklet can operate outside the confines of facebook and yet access all the elements on the page, it can be made to auto insert the text to the comment box.
+
+But more importantly the bookmarklet can call a tipbot server with the tipping info even before the post is sent. 
+
+Another thing is to make the tippbot use bit.ly to return the url the user needs to click to get the coins and the same url can be used to let others signup to the tipping service.
+
+with bit.ly or other url shortening service facebook would not be able to block links to a fixed domain either.
+
+I wrote a small bookmarklet as a proof-of-concept. You can test it by dragging the link bellow to your toolbar, then open facebook waith for the page to finish loading click on the bookmark you just added and move the mouse around the page over the thumbnails of your friends.
+
+<a href="javascript:(function(){(function(document){var%20starttagging=true;var%20tiplink=%22%22;var%20css=document.createElement('style');var%20id=document.createElement('div');id.id='tipid';id.innerHTML='Welcome%20to%20Doge%20Tips!';id.style.cssText=%22position:fixed;top:50px;left:30px;height:145px;width:200px;background-Color:rgba(32,32,32,0.8);color:%23fff;text-Shadow:0%202px%202px%20%23000;padding:8px;font-Size:13px;font-Family:'Lucida%20Grande';border:1px%20solid%20%23666;border-radius:5px;%22;document.body.appendChild(id);window.closetipwindow=(function(){document.getElementById(%22tipid%22).remove();});document.body.addEventListener('mouseover',function(event){if(starttagging){var%20el=event.target;var%20resultx=%22%22;if((el.nodeName==%22IMG%22)%26%26(el.parentNode.nodeName==%22A%22)){if(((el.clientWidth==32)%26%26(el.clientHeight==32))||((el.clientWidth==50)%26%26(el.clientHeight==50))){tiplink=el.parentNode.attributes['href'].value;var%20tipname=tiplink.replace('https://www.facebook.com/','');resultx+=%22%3Cimg%20src='%22%20+%20el.attributes['src'].value%20+%20%22'%20style='float:left;margin-right:5px;margin-bottom:5px;'%3E%22;resultx+=%22Tip%20%3Cb%3E%22+tipname+%22%3C/b%3E%3Cbr%3E%20with%20%3Cinput%20type='text'%20value='50'%20style='width:50px;'%3E%20DOGES%22;resultx+=%22%3Cbr%3E%3Cbutton%20onclick='window.closetipwindow()'%3ESend%20Tip%3C/button%3E%22;resultx+=%22%3Cbr%3E%3Ctextarea%20style='margin-top:5px;width:190px;height:40px;'%3EI%20tip%20my%20hat%20to%20%22+tipname+%22%20with%2050%20%23Doges.%20Join%20the%20Doge%20Revolution.%20http://bit.ly/1c58SrA%20Click%20to%20start%20giving%20tips%20and%20receiving%20tips%20from%20your%20friends!%3C/textarea%3E%22;resultx+=%22%3Cbr%3Ecopy%20the%20text%20to%20the%20comment%20window%20to%20tell%20everyone%20you%20tipped.%22;}}document.getElementById('tipid').innerHTML=resultx;}},false);document.body.addEventListener(%22mousedown%22,function(event){if(starttagging){event.stopPropagation();event.preventDefault();return%20false;}},false);document.body.addEventListener(%22mouseup%22,function(event){if(starttagging){event.stopPropagation();event.preventDefault();return%20false;}},false);document.body.addEventListener(%22click%22,function(event){if(starttagging){starttagging=false;var%20origEl=event.target%20||%20event.srcElement;if(origEl.tagName==='A'){}event.stopPropagation();event.preventDefault();return%20false;}},false);})(document);})();">DRAG ME TO YOUR TOOLBAR</a>
+
